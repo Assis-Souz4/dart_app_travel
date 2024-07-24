@@ -7,7 +7,7 @@ class Viagem {
   Set<String> registroVisitados = <String>{};
   Map<String, dynamic> registrarPecos = {};
 
-  int _totalLocaisVisitados = 6;
+  int _totalLocaisVisitados = 0;
 
   Viagem({required this.locomocao});
 
@@ -36,6 +36,7 @@ class Viagem {
 
   void visitar(String localVisita) {
     registroVisitados.add(localVisita);
+    _totalLocaisVisitados++;
   }
 
   void registrarPrecoVisita(String local, dynamic preco) {
@@ -44,5 +45,13 @@ class Viagem {
 
   int get consultarTotalLocaisVisitados {
     return _totalLocaisVisitados;
+  }
+
+  void set alterarLocaisVisitados(novaQnt) {
+    if (novaQnt < 10) {
+      _totalLocaisVisitados = novaQnt;
+    } else {
+      print('Atenção verifique se vc realmente visitou ${novaQnt} locais.');
+    }
   }
 }
